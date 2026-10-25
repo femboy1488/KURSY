@@ -1,0 +1,2 @@
+# KURSY
+just some readmestuffnothingintresting
