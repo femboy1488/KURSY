@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ВЕНЕРА — Студия & Академия Красоты</title>
+  <title>ВЕНЕРА • Студия & Академия</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0a0a0f;
-      --card-bg: #13131c;
-      --accent-pink: #ff2a85;
-      --accent-purple: #8a2be2;
-      --accent-gold: #ffd700;
-      --text-main: #f3f3f8;
-      --text-muted: #8e8ea0;
-      --border-color: rgba(255, 42, 133, 0.2);
-      --glow: 0 0 20px rgba(255, 42, 133, 0.35);
+      --bg: #0b0a09;
+      --surface: #141210;
+      --surface-card: #1a1714;
+      --border: rgba(198, 167, 129, 0.12);
+      --border-hover: rgba(198, 167, 129, 0.35);
+      
+      --accent: #c6a781;
+      --accent-dark: #8c7251;
+      
+      --text-main: #f5f2ed;
+      --text-muted: #8c857b;
+      
+      --transition: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -28,76 +32,77 @@
     }
 
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg);
       color: var(--text-main);
-      padding-bottom: 90px;
+      padding-bottom: 80px;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Header Section */
+    /* Header */
     .header {
-      padding: 24px 20px 16px;
-      text-align: center;
-      background: radial-gradient(circle at top, rgba(138, 43, 226, 0.15), transparent 70%);
-      border-bottom: 1px solid var(--border-color);
+      padding: 32px 24px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(26,23,20,0.6) 0%, rgba(11,10,9,0) 100%);
     }
 
     .brand-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      background: linear-gradient(135deg, #fff 0%, #ff85c0 50%, var(--accent-pink) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      text-shadow: 0 0 15px rgba(255, 42, 133, 0.3);
+      font-family: 'Instrument Serif', serif;
+      font-size: 38px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: var(--text-main);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .brand-title span {
+      color: var(--accent);
+      font-style: italic;
     }
 
     .brand-subtitle {
-      font-size: 13px;
+      font-size: 11px;
       color: var(--text-muted);
-      letter-spacing: 1px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 500;
     }
 
     /* Tabs Navigation */
     .nav-tabs {
       display: flex;
-      gap: 8px;
-      padding: 16px 20px;
+      gap: 6px;
+      padding: 16px 24px;
       position: sticky;
       top: 0;
-      background: rgba(10, 10, 15, 0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(11, 10, 9, 0.85);
+      backdrop-filter: blur(16px);
       z-index: 100;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid var(--border);
     }
 
     .tab-btn {
       flex: 1;
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border-color);
-      background: var(--card-bg);
+      padding: 11px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
       color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
       cursor: pointer;
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+      transition: all 0.25s var(--transition);
+      text-align: center;
     }
 
     .tab-btn.active {
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-      color: #fff;
-      border-color: transparent;
-      box-shadow: var(--glow);
+      background: var(--accent);
+      color: #0b0a09;
+      border-color: var(--accent);
+      font-weight: 600;
     }
 
     /* Filter Chips */
@@ -105,33 +110,33 @@
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding: 0 20px 16px;
+      padding: 16px 24px 8px;
       scrollbar-width: none;
     }
     .filter-scroll::-webkit-scrollbar { display: none; }
 
     .chip {
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--surface);
+      border: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 13px;
+      font-size: 11px;
+      font-weight: 500;
       white-space: nowrap;
       cursor: pointer;
       transition: 0.2s;
     }
 
     .chip.active {
-      background: rgba(255, 42, 133, 0.15);
-      border-color: var(--accent-pink);
-      color: var(--accent-pink);
-      font-weight: 600;
+      background: rgba(198, 167, 129, 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
-    /* Content Cards Grid */
+    /* Content Sections */
     .content-section {
-      padding: 0 20px;
+      padding: 8px 24px 0;
       display: none;
     }
 
@@ -140,105 +145,101 @@
     }
 
     .card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--surface-card);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 4px; height: 100%;
-      background: linear-gradient(to bottom, var(--accent-pink), var(--accent-purple));
-      opacity: 0;
-      transition: 0.2s;
+      transition: border-color 0.25s var(--transition), transform 0.2s;
     }
 
     .card:active {
-      transform: scale(0.98);
-      border-color: var(--border-color);
-    }
-
-    .card:active::before {
-      opacity: 1;
+      transform: scale(0.99);
+      border-color: var(--border-hover);
     }
 
     .card-badge {
       align-self: flex-start;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 600;
       text-transform: uppercase;
-      background: rgba(255, 215, 0, 0.15);
-      color: var(--accent-gold);
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      background: rgba(198, 167, 129, 0.08);
+      color: var(--accent);
       margin-bottom: 10px;
+      letter-spacing: 1px;
+      border: 1px solid rgba(198, 167, 129, 0.15);
     }
 
     .card-title {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #fff;
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      color: var(--text-main);
+      line-height: 1.1;
     }
 
     .card-desc {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
-      line-height: 1.4;
-      margin-bottom: 14px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      font-weight: 300;
     }
 
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: auto;
       padding-top: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
     }
 
     .card-price {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--accent-pink);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: -0.2px;
     }
 
     .card-time {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      font-weight: 300;
     }
 
     .book-btn {
-      padding: 10px 18px;
-      border-radius: 12px;
-      border: none;
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-main);
+      font-size: 11px;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(255, 42, 133, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+
+    .book-btn:hover, .book-btn:active {
+      background: var(--accent);
+      color: #0b0a09;
+      border-color: var(--accent);
     }
 
     /* Booking Modal Overlay */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(11, 10, 9, 0.85);
+      backdrop-filter: blur(12px);
       z-index: 1000;
       display: none;
       align-items: flex-end;
@@ -250,14 +251,14 @@
 
     .modal-content {
       width: 100%;
-      background: #161622;
-      border-top-left-radius: 28px;
-      border-top-right-radius: 28px;
-      padding: 24px 20px 34px;
-      border-top: 1px solid var(--border-color);
+      background: #141210;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      padding: 24px 24px 40px;
+      border-top: 1px solid var(--border);
       max-height: 85vh;
       overflow-y: auto;
-      animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: slideUp 0.35s var(--transition);
     }
 
     @keyframes slideUp {
@@ -268,51 +269,57 @@
     .modal-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
+      align-items: flex-start;
+      margin-bottom: 24px;
     }
 
     .modal-title {
-      font-size: 20px;
-      font-weight: 700;
+      font-family: 'Instrument Serif', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text-main);
+      line-height: 1.1;
     }
 
     .close-btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: #fff;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      font-size: 18px;
+      font-size: 14px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .section-label {
-      font-size: 13px;
+      font-size: 10px;
       color: var(--text-muted);
       margin-bottom: 10px;
       text-transform: uppercase;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 1.5px;
     }
 
     /* Date Picker Circles */
     .date-picker {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       overflow-x: auto;
-      padding-bottom: 14px;
-      margin-bottom: 18px;
+      padding-bottom: 4px;
+      margin-bottom: 20px;
       scrollbar-width: none;
     }
 
     .date-circle {
-      min-width: 60px;
-      height: 70px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      min-width: 54px;
+      height: 64px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -321,69 +328,78 @@
       transition: all 0.2s;
     }
 
-    .date-circle .day { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
-    .date-circle .num { font-size: 18px; font-weight: 800; margin-top: 2px; }
+    .date-circle .day { font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 500; }
+    .date-circle .num { font-size: 16px; font-weight: 600; color: var(--text-main); margin-top: 2px; }
 
     .date-circle.active {
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-      border-color: transparent;
-      box-shadow: var(--glow);
+      background: var(--accent);
+      border-color: var(--accent);
     }
-    .date-circle.active .day { color: rgba(255,255,255,0.8); }
+    .date-circle.active .day,
+    .date-circle.active .num { color: #0b0a09; }
 
     /* Time Slots */
     .time-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
       margin-bottom: 20px;
     }
 
     .time-slot {
-      padding: 12px;
+      padding: 10px 4px;
       text-align: center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
       cursor: pointer;
+      transition: 0.2s;
     }
 
     .time-slot.active {
-      background: rgba(255, 42, 133, 0.2);
-      border-color: var(--accent-pink);
-      color: var(--accent-pink);
+      background: rgba(198, 167, 129, 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .input-field {
       width: 100%;
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      font-size: 15px;
-      margin-bottom: 12px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-size: 13px;
+      margin-bottom: 10px;
       outline: none;
+      transition: border-color 0.2s;
     }
 
     .input-field:focus {
-      border-color: var(--accent-pink);
+      border-color: var(--accent);
     }
 
     .confirm-btn {
       width: 100%;
-      padding: 16px;
-      border-radius: 16px;
+      padding: 14px;
+      border-radius: 8px;
       border: none;
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
+      background: var(--accent);
+      color: #0b0a09;
+      font-size: 12px;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: var(--glow);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
       margin-top: 10px;
+      transition: opacity 0.2s;
+    }
+
+    .confirm-btn:active {
+      opacity: 0.9;
     }
   </style>
 </head>
@@ -391,61 +407,60 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="brand-title">✨ ВЕНЕРА ✨</div>
-    <div class="brand-subtitle">Студия Красоты & Академия</div>
+    <div class="brand-title">Венера <span>&</span> Академия</div>
+    <div class="brand-subtitle">Studio & Education</div>
   </div>
 
   <!-- Navigation Tabs -->
   <div class="nav-tabs">
-    <button class="tab-btn active" onclick="switchTab('services')">💅 Запись на Услуги</button>
-    <button class="tab-btn" onclick="switchTab('courses')">🎓 Обучение</button>
+    <button class="tab-btn active" onclick="switchTab('services')">Услуги</button>
+    <button class="tab-btn" onclick="switchTab('courses')">Обучение</button>
   </div>
 
   <!-- Services Section -->
   <div id="services-section" class="content-section active">
     
     <div class="filter-scroll">
-      <div class="chip active" onclick="filterServices('all', this)">Все услуги</div>
+      <div class="chip active" onclick="filterServices('all', this)">Все</div>
       <div class="chip" onclick="filterServices('nails', this)">Маникюр</div>
       <div class="chip" onclick="filterServices('pedi', this)">Педикюр & Стопы</div>
       <div class="chip" onclick="filterServices('brows', this)">Брови & Ресницы</div>
     </div>
 
-    <!-- Cards -->
     <div class="card" data-cat="nails">
-      <div class="card-title">Комплекс «Венера» (Маникюр)</div>
-      <div class="card-desc">Снятие + комбинация/аппарат + выравнивание + покрытие гель-лак.</div>
+      <div class="card-title">Комплекс «Венера»</div>
+      <div class="card-desc">Снятие, аппаратный/комби маникюр, архитектура ногтевой пластины, идеальное покрытие гель-лак.</div>
       <div class="card-footer">
         <div>
           <div class="card-price">2 500 ₽</div>
-          <div class="card-time">⏱ 1.5 часа</div>
+          <div class="card-time">1.5 часа</div>
         </div>
-        <button class="book-btn" onclick="openBooking('Комплекс «Венера» (Маникюр)', '2 500 ₽')">Записаться</button>
+        <button class="book-btn" onclick="openBooking('Комплекс «Венера» (Маникюр)', '2 500 ₽')">Запись</button>
       </div>
     </div>
 
     <div class="card" data-cat="pedi">
-      <div class="card-badge">Хит Сезона</div>
-      <div class="card-title">Педикюр + Гладкая кожа стоп</div>
-      <div class="card-desc">Обработка пальчиков + смарт-диск/препараты для стоп + покрытие.</div>
+      <div class="card-badge">Эстетика</div>
+      <div class="card-title">Педикюр + Smart-обработка стоп</div>
+      <div class="card-desc">Глубокая работа с кожей стоп дисками, пальчики, покрытие в тон или уход.</div>
       <div class="card-footer">
         <div>
           <div class="card-price">3 200 ₽</div>
-          <div class="card-time">⏱ 1.5 - 2 часа</div>
+          <div class="card-time">1.5 часа</div>
         </div>
-        <button class="book-btn" onclick="openBooking('Педикюр + Гладкая кожа стоп', '3 200 ₽')">Записаться</button>
+        <button class="book-btn" onclick="openBooking('Педикюр + Smart-обработка стоп', '3 200 ₽')">Запись</button>
       </div>
     </div>
 
     <div class="card" data-cat="brows">
-      <div class="card-title">Ламинирование Ресниц + Брови</div>
-      <div class="card-desc">Полный взгляд под ключ: изгиб ресниц + архитектура и окрашивание бровей.</div>
+      <div class="card-title">Ламинирование Ресниц & Брови</div>
+      <div class="card-desc">Комплексный уход за взглядом: долговременная укладка бровей и изгиб ресниц с окрашиванием.</div>
       <div class="card-footer">
         <div>
           <div class="card-price">2 800 ₽</div>
-          <div class="card-time">⏱ 1 час</div>
+          <div class="card-time">1 час</div>
         </div>
-        <button class="book-btn" onclick="openBooking('Ламинирование Ресниц + Брови', '2 800 ₽')">Записаться</button>
+        <button class="book-btn" onclick="openBooking('Ламинирование Ресниц & Брови', '2 800 ₽')">Запись</button>
       </div>
     </div>
 
@@ -455,40 +470,40 @@
   <div id="courses-section" class="content-section">
 
     <div class="card">
-      <div class="card-badge">Для Начинающих</div>
-      <div class="card-title">Базовый курс: Маникюр с нуля</div>
-      <div class="card-desc">3 дня интенсивной практики на моделях. Аппарат, идеальное покрытие, опил форм и привлечение первых клиентов.</div>
+      <div class="card-badge">Интенсив</div>
+      <div class="card-title">Маникюр с нуля</div>
+      <div class="card-desc">Базовый курс. Постановка руки, отработка на моделях, стерилизация и основы продвижения мастера.</div>
       <div class="card-footer">
         <div>
           <div class="card-price">18 000 ₽</div>
-          <div class="card-time">📜 Выдаём сертификат</div>
+          <div class="card-time">Сертификат</div>
         </div>
-        <button class="book-btn" onclick="openBooking('Курс: Маникюр с нуля', '18 000 ₽')">Записаться</button>
+        <button class="book-btn" onclick="openBooking('Курс: Маникюр с нуля', '18 000 ₽')">Запись</button>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-badge">ТОП Направление</div>
-      <div class="card-title">Педикюр & Эстетика стоп</div>
-      <div class="card-desc">2 дня практики. Обработка сложных стоп, трещин, работа со Smart-дисками и подбор домашнего ухода.</div>
+      <div class="card-badge">Профессионал</div>
+      <div class="card-title">Педикюр & Подология</div>
+      <div class="card-desc">Работа со сложными стопами, трещинами, установка титановой нити и смарт-техники.</div>
       <div class="card-footer">
         <div>
           <div class="card-price">15 000 ₽</div>
-          <div class="card-time">📜 Выдаём сертификат</div>
+          <div class="card-time">Сертификат</div>
         </div>
-        <button class="book-btn" onclick="openBooking('Курс: Педикюр & Эстетика стоп', '15 000 ₽')">Записаться</button>
+        <button class="book-btn" onclick="openBooking('Курс: Педикюр & Подология', '15 000 ₽')">Запись</button>
       </div>
     </div>
 
     <div class="card">
       <div class="card-title">Lash & Brow Master</div>
-      <div class="card-desc">Экспресс-курс 1 день: Ламинирование ресниц, долговременная укладка бровей и окрашивание.</div>
+      <div class="card-desc">Обучение ламинированию ресниц и долговременной укладке бровей с нуля до первых клиентов.</div>
       <div class="card-footer">
         <div>
           <div class="card-price">9 900 ₽</div>
-          <div class="card-time">📜 Выдаём сертификат</div>
+          <div class="card-time">Сертификат</div>
         </div>
-        <button class="book-btn" onclick="openBooking('Курс: Lash & Brow Master', '9 900 ₽')">Записаться</button>
+        <button class="book-btn" onclick="openBooking('Курс: Lash & Brow Master', '9 900 ₽')">Запись</button>
       </div>
     </div>
 
@@ -499,18 +514,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <div>
+          <div style="font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;" id="modal-item-price">0 ₽</div>
           <div class="modal-title" id="modal-item-title">Запись</div>
-          <div style="font-size: 13px; color: var(--accent-pink); font-weight: 700;" id="modal-item-price">0 ₽</div>
         </div>
         <button class="close-btn" onclick="closeBooking()">✕</button>
       </div>
 
-      <div class="section-label">Выберите дату</div>
-      <div class="date-picker" id="date-picker">
-        <!-- Generates circles automatically -->
-      </div>
+      <div class="section-label">Дата визита</div>
+      <div class="date-picker" id="date-picker"></div>
 
-      <div class="section-label">Выберите время</div>
+      <div class="section-label">Время</div>
       <div class="time-grid">
         <div class="time-slot active" onclick="selectTime(this)">10:00</div>
         <div class="time-slot" onclick="selectTime(this)">13:00</div>
@@ -518,11 +531,11 @@
         <div class="time-slot" onclick="selectTime(this)">19:00</div>
       </div>
 
-      <div class="section-label">Ваши контакты</div>
-      <input type="text" id="client-name" class="input-field" placeholder="Ваше Имя" required>
-      <input type="tel" id="client-phone" class="input-field" placeholder="Номер телефона (+7...)" required>
+      <div class="section-label">Контакты</div>
+      <input type="text" id="client-name" class="input-field" placeholder="Ваше имя" required>
+      <input type="tel" id="client-phone" class="input-field" placeholder="Номер телефона" required>
 
-      <button class="confirm-btn" onclick="submitBooking()">Подтвердить запись ✨</button>
+      <button class="confirm-btn" onclick="submitBooking()">Подтвердить запись</button>
     </div>
   </div>
 
@@ -562,7 +575,6 @@
       });
     }
 
-    // Generate Date Circles
     function initDatePicker() {
       const picker = document.getElementById('date-picker');
       picker.innerHTML = '';
@@ -621,7 +633,7 @@
       const phone = document.getElementById('client-phone').value.trim();
 
       if (!name || !phone) {
-        alert('Пожалуйста, введите ваше имя и номер телефона');
+        alert('Заполните имя и телефон');
         return;
       }
 
@@ -637,7 +649,7 @@
       if (tg && tg.sendData) {
         tg.sendData(JSON.stringify(bookingData));
       } else {
-        alert(`Спасибо, ${name}! Заявка на "${selectedService}" (${selectedDate} в ${selectedTime}) принята. Мы свяжемся с вами по номеру ${phone}!`);
+        alert(`Заявка принята! ${name}, ждем вас ${selectedDate} в ${selectedTime}`);
         closeBooking();
       }
     }
