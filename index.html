@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы Маникюра</title>
+    <!-- Подключаем Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Официальный SDK Telegram Web App -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body class="bg-pink-50 text-gray-800 font-sans p-4 pb-20">
+    <div class="max-w-md mx-auto">
+        <header class="text-center my-6">
+            <h1 class="text-2xl font-extrabold text-pink-600">💅 Manicure Academy</h1>
+            <p class="text-xs text-gray-500 mt-1">Выбирай курс, прокачивай навыки и зарабатывай</p>
+        </header>
+
+        <!-- Список курсов -->
+        <div id="courses-list" class="space-y-4">
+            <!-- Курс 1 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-pink-100 flex flex-col justify-between">
+                <div>
+                    <span class="bg-pink-100 text-pink-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Хит продаж</span>
+                    <h2 class="font-bold text-lg text-gray-800 mt-2">Базовый курс: С нуля до мастера</h2>
+                    <p class="text-xs text-gray-500 mt-1">Анатомия ногтей, дезинфекция, комбинированный маникюр, выравнивание базы и покрытие под кутикулу.</p>
+                </div>
+                <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">
+                    <span class="font-bold text-pink-600 text-lg">4 990 ₽</span>
+                    <button onclick="selectCourse('Базовый курс', 4990)" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition active:scale-95">Выбрать</button>
+                </div>
+            </div>
+
+            <!-- Курс 2 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-pink-100 flex flex-col justify-between">
+                <div>
+                    <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Продвинутый</span>
+                    <h2 class="font-bold text-lg text-gray-800 mt-2">Аппаратный мастер Плюс</h2>
+                    <p class="text-xs text-gray-500 mt-1">Работа одной фрезой, идеальный срез без ножниц, скорость выполнения от 1 часа.</p>
+                </div>
+                <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">
+                    <span class="font-bold text-pink-600 text-lg">7 500 ₽</span>
+                    <button onclick="selectCourse('Аппаратный мастер Плюс', 7500)" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition active:scale-95">Выбрать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        let selected = null;
+
+        function selectCourse(courseName, price) {
+            selected = { course: courseName, price: price };
+            tg.MainButton.text = `Купить: ${courseName} (${price} ₽)`;
+            tg.MainButton.color = "#db2777";
+            tg.MainButton.textColor = "#ffffff";
+            tg.MainButton.show();
+        }
+
+        Telegram.WebApp.onEvent('mainButtonClicked', function(){
+            if (selected) {
+                tg.sendData(JSON.stringify({
+                    action: 'buy',
+                    course: selected.course,
+                    price: selected.price
+                }));
+            }
+        });
+    </script>
+</body>
+</html>
